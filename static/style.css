@@ -1,0 +1,406 @@
+
+/* =====================================
+   DIWALI NIGHT - AI RESUME SCREENING
+   Purple | Pink | Gold | Festive Lights
+===================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+/* MAIN DIWALI NIGHT SKY */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 50px 20px;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(circle at 15% 15%, rgba(174, 69, 255, 0.35), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(255, 83, 177, 0.25), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(255, 174, 58, 0.18), transparent 35%),
+        linear-gradient(135deg, #10051f, #25103e, #40134f, #170921);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* =====================================
+   FIREWORKS AND SPARKLING SKY
+===================================== */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    background:
+        /* Firework burst */
+        repeating-conic-gradient(
+            from 0deg at 17% 22%,
+            transparent 0deg 11deg,
+            rgba(255, 211, 105, 0.85) 11.5deg 12.5deg,
+            transparent 13deg 15deg
+        ),
+
+        /* Golden glowing stars */
+        radial-gradient(circle at 17% 22%, #fff4b0 0 3px, #ffbf4d 4px 7px, transparent 10px),
+        radial-gradient(circle at 82% 18%, #ffcf75 0 3px, transparent 6px),
+        radial-gradient(circle at 72% 42%, #ff85d0 0 2px, transparent 5px),
+        radial-gradient(circle at 10% 70%, #ffe5a0 0 2px, transparent 5px),
+        radial-gradient(circle at 91% 72%, #ff9cdd 0 3px, transparent 6px),
+        radial-gradient(circle at 45% 12%, #fff1b0 0 2px, transparent 5px),
+
+        /* Tiny stars */
+        radial-gradient(circle, rgba(255,255,255,0.9) 1px, transparent 2px);
+
+    background-size:
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        75px 75px;
+
+    -webkit-mask-image:
+        radial-gradient(circle at 17% 22%, black 0 80px, transparent 115px),
+        linear-gradient(black, black);
+    -webkit-mask-composite: source-in, source-over;
+
+    opacity: 0.8;
+    animation: sparkleSky 5s ease-in-out infinite alternate;
+}
+
+@keyframes sparkleSky {
+    from {
+        opacity: 0.55;
+        filter: brightness(0.9);
+    }
+    to {
+        opacity: 1;
+        filter: brightness(1.5);
+    }
+}
+
+/* =====================================
+   DECORATIVE ROCKET IN THE SKY
+===================================== */
+
+body::after {
+    content: "🚀";
+    position: fixed;
+    left: -60px;
+    bottom: 12%;
+    font-size: 30px;
+    z-index: 0;
+    pointer-events: none;
+
+    filter: drop-shadow(0 0 12px #ffb84d);
+
+    animation: rocketFlight 11s linear infinite;
+}
+
+@keyframes rocketFlight {
+    0% {
+        left: -60px;
+        bottom: 12%;
+        transform: rotate(-35deg) scale(0.7);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 105%;
+        bottom: 90%;
+        transform: rotate(-35deg) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* =====================================
+   MAIN REGISTRATION CARD
+===================================== */
+
+.container {
+    width: 100%;
+    max-width: 650px;
+    margin: auto;
+    padding: 42px;
+
+    position: relative;
+    z-index: 1;
+
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 221, 164, 0.75);
+    border-radius: 25px;
+
+    box-shadow:
+        0 0 25px rgba(255, 190, 91, 0.22),
+        0 0 60px rgba(190, 90, 255, 0.22),
+        0 20px 60px rgba(0, 0, 0, 0.35);
+
+    overflow: hidden;
+}
+
+/* GOLDEN LIGHT AT THE TOP */
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 7px;
+
+    background: linear-gradient(
+        90deg,
+        #ffd36a,
+        #ff70bd,
+        #a76aff,
+        #ffd36a
+    );
+
+    background-size: 200% 100%;
+    animation: goldenGlow 4s linear infinite;
+}
+
+@keyframes goldenGlow {
+    from { background-position: 0% 50%; }
+    to { background-position: 200% 50%; }
+}
+
+/* =====================================
+   HEADINGS
+===================================== */
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+
+    background: linear-gradient(
+        90deg,
+        #6e31a7,
+        #d34a9d,
+        #a14bc2
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    margin-bottom: 12px;
+}
+
+h1::after {
+    content: " ✨";
+    -webkit-text-fill-color: #e9a83c;
+}
+
+h2 {
+    text-align: center;
+    color: #743e91;
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+
+h2::before {
+    content: "🪔 ";
+}
+
+h2::after {
+    content: " 🪔";
+}
+
+/* =====================================
+   FORM LABELS
+===================================== */
+
+label {
+    display: block;
+    margin-top: 21px;
+    margin-bottom: 8px;
+
+    color: #613878;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* =====================================
+   INPUT FIELDS
+===================================== */
+
+input:not([type="file"]),
+textarea {
+    width: 100%;
+    padding: 14px 16px;
+
+    border: 1.5px solid #e6c8ef;
+    border-radius: 12px;
+
+    background: #fffaff;
+    color: #49305c;
+
+    font-size: 14px;
+    outline: none;
+
+    transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #c05bb7;
+    background: white;
+
+    box-shadow:
+        0 0 0 4px rgba(202, 94, 190, 0.12),
+        0 0 14px rgba(255, 182, 83, 0.12);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #aa98b3;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* =====================================
+   RESUME UPLOAD
+===================================== */
+
+input[type="file"] {
+    width: 100%;
+    padding: 13px;
+
+    border: 1.5px dashed #c18bd9;
+    border-radius: 12px;
+
+    background: #fff8ff;
+    color: #71428c;
+
+    cursor: pointer;
+}
+
+/* =====================================
+   SUBMIT BUTTON
+===================================== */
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 27px;
+
+    border: none;
+    border-radius: 13px;
+
+    background: linear-gradient(
+        110deg,
+        #7841b5,
+        #c64c9c,
+        #e99b42
+    );
+
+    background-size: 200% 100%;
+
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 20px rgba(177, 79, 171, 0.3),
+        0 0 12px rgba(255, 192, 94, 0.18);
+
+    transition: all 0.35s ease;
+}
+
+button:hover {
+    background-position: 100% 50%;
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 28px rgba(191, 79, 166, 0.35),
+        0 0 20px rgba(255, 193, 93, 0.3);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* =====================================
+   RESULT SECTION
+===================================== */
+
+#result {
+    display: none;
+
+    margin-top: 25px;
+    padding: 22px;
+
+    background: linear-gradient(
+        135deg,
+        #fff2fa,
+        #fff8e9
+    );
+
+    border: 1px solid #edc9df;
+    border-radius: 15px;
+
+    color: #603a77;
+    line-height: 1.8;
+
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+/* =====================================
+   MOBILE RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 25px 14px;
+    }
+
+    .container {
+        padding: 25px 20px;
+    }
+
+    h1 {
+        font-size: 23px;
+    }
+
+    h2 {
+        font-size: 19px;
+    }
+}
+
+/* REDUCE MOTION IF REQUESTED BY DEVICE */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

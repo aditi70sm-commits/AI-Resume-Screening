@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Screening Platform</title>
+
+    <style>
+       
+
+    </style>
+</head>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<body>
+
+<div class="container">
+
+    <h1>AI Resume Screening Platform</h1>
+    <h2>Candidate Registration</h2>
+
+    <form id="resumeForm" method="POST" enctype="multipart/form-data">
+
+        <label>Candidate Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label>Email Address:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label>Upload Resume (PDF):</label>
+        <input type="file" id="resume" name="resume" accept=".pdf" required>
+        <label>Job Description:</label>
+        <textarea id="job" rows="5"
+        <textarea id="job" name="job" rows="5" placeholder="Enter job requirements" required></textarea>
+        <button type="submit">Submit Resume</button>
+
+    </form>
+
+    <div id="result"></div>
+
+</div>
+
+
+<script>
+document.getElementById("resumeForm").addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const form = this;
+    const result = document.getElementById("result");
+
+    result.style.display = "block";
+    result.textContent = "Uploading and processing your resume...";
+
+    const formData = new FormData(form);
+
+    try {
+        const response = await fetch("/upload", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || "Upload failed.");
+        }
+
+        result.textContent =
+            "SUCCESS!\n\n" +
+            "Candidate: " + data.candidate + "\n" +
+            "Email: " + data.email + "\n" +
+            "Resume: " + data.resume + "\n\n" +
+            "Extracted Resume Text:\n" +
+            data.extracted_text;
+
+    } catch (error) {
+        result.textContent = "ERROR: " + error.message;
+    }
+});
+</script>
